@@ -71,12 +71,14 @@ Bypassing NetworkManager via Terminal: Instead of relying on the GUI settings to
 
 No internet connection shown on Kali while fine connection on host machine.
 
-<img width="523" height="205" alt="image" src="https://github.com/user-attachments/assets/501b5f7a-0edf-422d-8624-650c04b75a1a" />
+<img width="448" height="438" alt="Screenshot 2026-08-11 153025" src="https://github.com/user-attachments/assets/bc042751-f55a-4b7b-9b9a-28735bf3d7b9" />
 
 
 **The Solution**
 
 Tried to ping,showed unreachable,
+
+<img width="206" height="105" alt="Screenshot 2026-08-11 153537" src="https://github.com/user-attachments/assets/1ead94cd-b3ed-48d7-b9ea-c0282754ce46" />
 
 Then, I switched the IPv4 method from Manual to Automatic (DHCP), so instead of you guessing the IP, your VM would just ask VirtualBox's NAT Network for one automatically.
 
