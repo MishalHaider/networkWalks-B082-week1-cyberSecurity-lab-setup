@@ -32,13 +32,13 @@ _Step 2: Configure VirtualBox NAT Network (10.0.0.0/24)_
 
 <img width="563" height="461" alt="virtualBoxSettings-Network" src="https://github.com/user-attachments/assets/b88c0ed7-746c-4a67-9dbc-3cfe7dfd5e30" />
 
-_Step 4: Download & Import Kali Linux VM_
+_Step 3: Download & Import Kali Linux VM_
 **What was done:** Downloaded the official pre-built Kali Linux VirtualBox image from kali.org, extracted it using WinRAR, imported it into VirtualBox, and attached its network interface to our custom NAT Network.
 **Why**: Importing a pre-built image skips the long manual OS installation, and linking it to our NAT Network ensures it immediately joins the 10.0.0.0/24 lab subnet.
 
 <img width="554" height="434" alt="installation of virtualbox and kali linux" src="https://github.com/user-attachments/assets/d7b40335-446d-4960-915b-5ba709443a52" />
 
-_Step 5: Configure Kali Linux IP Settings (10.0.0.2)_
+_Step 4: Configure Kali Linux IP Settings (10.0.0.2)_
 **What was done:** Started the Kali Linux VM and configured its main network adapter (eth0) with static parameters:
 IP Address: 10.0.0.2,Netmask: 255.255.255.0 (/24),Gateway: 10.0.0.1,DNS: 8.8.8.8
 (Applied via NetworkManager settings and verified through terminal commands like sudo ifconfig eth0 10.0.0.2 netmask 255.255.255.0 up).
@@ -73,6 +73,35 @@ Then, I switched the IPv4 method from Manual to Automatic (DHCP), so instead of 
 
 <img width="451" height="414" alt="image" src="https://github.com/user-attachments/assets/ea026fe1-ba76-4685-a288-6559c394b079" />
 
-_Step 6: Take Snapshot_
+_Step 5: Take Snapshot_
 
 <img width="1117" height="628" alt="image" src="https://github.com/user-attachments/assets/e4e2152d-e24c-43e6-b7a5-7de967f21c27" />
+
+_**What I Learned**_
+Through building and troubleshooting this lab, I gained hands-on experience in setting up a secure virtual environment for cybersecurity practice. Working through both the setup process and network issues taught me several key concepts:
+
+**Sandbox Safety & Isolation:** I learned why creating a sandbox is essential. Isolating hacking tools and target machines inside a dedicated virtual space ensures that experimental scans, scripts, or exploits never accidentally leak onto live home or public networks.
+
+**NAT vs. NAT Network:** I learned the crucial difference between VirtualBox networking modes. While standard NAT isolates a single machine, a NAT Network creates a shared virtual switch where multiple VMs can talk to each other on the same subnet (10.0.0.0/24) while still safely routing traffic out to the internet.
+
+**Linux Network Configuration & Troubleshooting:** Working directly inside Kali Linux gave me practical experience configuring network parameters. I learned how to set up static IPv4 addresses, subnets, and gateways—both through the graphical interface (nm-connection-editor) and via terminal commands like ifconfig and ip route.
+
+**Fixing Routing & DNS Issues:** When our connection dropped, I learned how critical DNS and routing tables are. I gained firsthand troubleshooting experience using /etc/resolv.conf to set up nameservers like Google DNS (8.8.8.8) and managing default routes so the VM can translate web domains like google.com.
+
+**VM Snapshots & Backups:** I learned why taking clean snapshots (like a "Clean_Lab_State") before running tests is a lifesaver. It gives you an instant recovery point to restore the VM if a script or configuration error breaks system files.
+
+**Lab Documentation:** I realized that keeping detailed notes—documenting commands, screenshots, error codes, and step-by-step solutions—is just as important as running the tools themselves for professional cybersecurity projects.
+
+**Tools & Resources**
+VirtualBox: https://virtualbox.org/wiki/Downloads
+Kali Linux: https://kali.org/get-kali
+(I already had winrar so didn't install 7zip)
+
+**Author**
+Mishal Haider
+Undergraduate Student | Pakistan
+
+LinkedIn: www.linkedin.com/in/mishal-haider-9b750b37a
+
+**Project Information**
+Program Name: Cybersecurity at Networkwalks | Week: 01 | Project: Cybersecurity & Pentesting Lab Setup | Repository: GitHub
