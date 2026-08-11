@@ -1,6 +1,5 @@
-# networkWalks-B082-week1-cyberSecurity-lab-setup
+# NETWORKWALKS-B082-week1-cyberSecurity-lab-setup
 First Week Project during the internship at "Network Walks".Building the setup for CyberSecurity Lab.
-
 
 
 **1. Purpose of the lab (why a sandbox, why isolated network)**
@@ -58,3 +57,22 @@ _**Solution**_
 Bypassing NetworkManager via Terminal: Instead of relying on the GUI settings to negotiate the static IP, we manually forced the IP address, subnet mask, and gateway directly through the command line.
 
 <img width="396" height="350" alt="solved" src="https://github.com/user-attachments/assets/af5e52c8-0367-463a-9418-410554870dd4" />
+
+**The Problem**
+No internet connection shown on Kali while fine connection on host machine.
+
+<img width="448" height="438" alt="Screenshot 2026-08-11 153025" src="https://github.com/user-attachments/assets/edd4b0e1-448b-46e8-be93-8c220d7d2ab6" />
+
+**The Solution**
+Tried to ping,showed unreachable,
+<img width="411" height="210" alt="image" src="https://github.com/user-attachments/assets/16da5424-9a39-4d12-8512-3440c29e7fe8" />
+
+<img width="523" height="205" alt="image" src="https://github.com/user-attachments/assets/501b5f7a-0edf-422d-8624-650c04b75a1a" />
+
+Then, I switched the IPv4 method from Manual to Automatic (DHCP), so instead of you guessing the IP, your VM would just ask VirtualBox's NAT Network for one automatically.
+
+<img width="451" height="414" alt="image" src="https://github.com/user-attachments/assets/ea026fe1-ba76-4685-a288-6559c394b079" />
+
+_Step 6: Take Snapshot_
+
+<img width="1117" height="628" alt="image" src="https://github.com/user-attachments/assets/e4e2152d-e24c-43e6-b7a5-7de967f21c27" />
