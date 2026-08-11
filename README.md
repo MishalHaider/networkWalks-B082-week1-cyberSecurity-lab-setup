@@ -3,12 +3,14 @@ First Week Project during the internship at "Network Walks".Building the setup f
 
 
 **1. Purpose of the lab (why a sandbox, why isolated network)**
+
 Before jumping into hands-on testing, setting up an isolated virtual environment (a "sandbox") is essential for a few big reasons:
 **Safety**: When testing tools, running port scans, or executing exploit scripts, you need a safe container. A sandbox keeps traffic contained so nothing accidentally leaks out onto your home Wi-Fi or local network.
 **Control**: Having a dedicated setup lets you play around with static IPs, subnets, and gateways to mirror real-world networks without breaking actual live systems.
 **Easy Resets**: If an experiment crashes the OS or mess up system files, we can quickly revert to a clean VirtualBox snapshot and start over in seconds, so our actual OS isnt compromised.
 
 **2. Lab environment details**
+
 Host Machine: Windows 11 (64-bit), 16 GB RAM, Intel i7 Processor
 VirtualBox: Oracle VM VirtualBox (v7)
 Guest OS: Kali Linux (2026.2)
@@ -20,25 +22,31 @@ Default Gateway: 10.0.0.1
 DNS: 8.8.8.8
 
 **3.STEP BY STEP BUILD**
+
+
 _Step 1: Download & Install Oracle VirtualBox_
+
 **What was done:** Downloaded the VirtualBox installer from virtualbox.org and completed the setup on the host system.
 **Why**: VirtualBox acts as our hypervisor—the core software that allows us to build and run isolated virtual machines (like Kali Linux) safely alongside our main operating system.
 
 [Insert Screenshot]: Screenshot of the VirtualBox Manager dashboard right after installation.
 
 _Step 2: Configure VirtualBox NAT Network (10.0.0.0/24)_
+
 **What was done:** Opened VirtualBox Tools / Network Manager, created a new NAT Network, and set the IP network subnet to 10.0.0.0/24.
 **Why**: Setting up a custom NAT Network creates an isolated virtual segment for our lab. It allows multiple VMs on this subnet to talk to each other while still securely sharing internet access through the host machine.
 
 <img width="563" height="461" alt="virtualBoxSettings-Network" src="https://github.com/user-attachments/assets/b88c0ed7-746c-4a67-9dbc-3cfe7dfd5e30" />
 
 _Step 3: Download & Import Kali Linux VM_
+
 **What was done:** Downloaded the official pre-built Kali Linux VirtualBox image from kali.org, extracted it using WinRAR, imported it into VirtualBox, and attached its network interface to our custom NAT Network.
 **Why**: Importing a pre-built image skips the long manual OS installation, and linking it to our NAT Network ensures it immediately joins the 10.0.0.0/24 lab subnet.
 
 <img width="554" height="434" alt="installation of virtualbox and kali linux" src="https://github.com/user-attachments/assets/d7b40335-446d-4960-915b-5ba709443a52" />
 
 _Step 4: Configure Kali Linux IP Settings (10.0.0.2)_
+
 **What was done:** Started the Kali Linux VM and configured its main network adapter (eth0) with static parameters:
 IP Address: 10.0.0.2,Netmask: 255.255.255.0 (/24),Gateway: 10.0.0.1,DNS: 8.8.8.8
 (Applied via NetworkManager settings and verified through terminal commands like sudo ifconfig eth0 10.0.0.2 netmask 255.255.255.0 up).
@@ -54,19 +62,21 @@ Even after manually entering 10.0.0.2 in the GUI settings, NetworkManager failed
 <img width="328" height="327" alt="prob" src="https://github.com/user-attachments/assets/fc937707-483e-4a23-ba4d-7bc388af12c2" />
 
 _**Solution**_
+
 Bypassing NetworkManager via Terminal: Instead of relying on the GUI settings to negotiate the static IP, we manually forced the IP address, subnet mask, and gateway directly through the command line.
 
 <img width="396" height="350" alt="solved" src="https://github.com/user-attachments/assets/af5e52c8-0367-463a-9418-410554870dd4" />
 
 **The Problem**
+
 No internet connection shown on Kali while fine connection on host machine.
 
-<img width="448" height="438" alt="Screenshot 2026-08-11 153025" src="https://github.com/user-attachments/assets/edd4b0e1-448b-46e8-be93-8c220d7d2ab6" />
+<img width="523" height="205" alt="image" src="https://github.com/user-attachments/assets/501b5f7a-0edf-422d-8624-650c04b75a1a" />
+
 
 **The Solution**
-Tried to ping,showed unreachable,
 
-<img width="523" height="205" alt="image" src="https://github.com/user-attachments/assets/501b5f7a-0edf-422d-8624-650c04b75a1a" />
+Tried to ping,showed unreachable,
 
 Then, I switched the IPv4 method from Manual to Automatic (DHCP), so instead of you guessing the IP, your VM would just ask VirtualBox's NAT Network for one automatically.
 
@@ -76,7 +86,10 @@ _Step 5: Take Snapshot_
 
 <img width="1117" height="628" alt="image" src="https://github.com/user-attachments/assets/e4e2152d-e24c-43e6-b7a5-7de967f21c27" />
 
+
+
 _**What I Learned**_
+
 Through building and troubleshooting this lab, I gained hands-on experience in setting up a secure virtual environment for cybersecurity practice. Working through both the setup process and network issues taught me several key concepts:
 
 **Sandbox Safety & Isolation:** I learned why creating a sandbox is essential. Isolating hacking tools and target machines inside a dedicated virtual space ensures that experimental scans, scripts, or exploits never accidentally leak onto live home or public networks.
@@ -92,11 +105,14 @@ Through building and troubleshooting this lab, I gained hands-on experience in s
 **Lab Documentation:** I realized that keeping detailed notes—documenting commands, screenshots, error codes, and step-by-step solutions—is just as important as running the tools themselves for professional cybersecurity projects.
 
 **Tools & Resources**
+
 VirtualBox: https://virtualbox.org/wiki/Downloads
 
 Kali Linux: https://kali.org/get-kali
 
 (I already had winrar so didn't install 7zip)
+
+
 
 **Author**
 Mishal Haider
@@ -105,6 +121,8 @@ Undergraduate Student | Pakistan
 
 
 LinkedIn: www.linkedin.com/in/mishal-haider-9b750b37a
+
+
 
 **Project Information**
 Program Name: Cybersecurity at Networkwalks | Week: 01 | Project: Cybersecurity & Pentesting Lab Setup | Repository: GitHub
