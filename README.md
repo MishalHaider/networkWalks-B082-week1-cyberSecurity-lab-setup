@@ -65,7 +65,6 @@ No internet connection shown on Kali while fine connection on host machine.
 
 **The Solution**
 Tried to ping,showed unreachable,
-<img width="411" height="210" alt="image" src="https://github.com/user-attachments/assets/16da5424-9a39-4d12-8512-3440c29e7fe8" />
 
 <img width="523" height="205" alt="image" src="https://github.com/user-attachments/assets/501b5f7a-0edf-422d-8624-650c04b75a1a" />
 
@@ -94,12 +93,16 @@ Through building and troubleshooting this lab, I gained hands-on experience in s
 
 **Tools & Resources**
 VirtualBox: https://virtualbox.org/wiki/Downloads
+
 Kali Linux: https://kali.org/get-kali
+
 (I already had winrar so didn't install 7zip)
 
 **Author**
 Mishal Haider
+
 Undergraduate Student | Pakistan
+
 
 LinkedIn: www.linkedin.com/in/mishal-haider-9b750b37a
 
